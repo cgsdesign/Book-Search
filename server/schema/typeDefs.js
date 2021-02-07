@@ -35,20 +35,20 @@ type Auth {
 
 type Query {
     me: User
-    users: [User]
-    user(username: String!): User
-    books(username: String): [Book]
-    book(_id: ID!): Book
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     createUser(username: String!, password: String!, email: String!): Auth
-    saveBook(bookId: ID!, input: bookInput): User
+    saveBook(bookInfo: BookInput): User
     deleteBook(bookId: ID!): User
 }
 
 `;
 //book mutations above refernce user because they are effecting the savedBooks category in the type User 
-
+//May add extra queries for testing purposes
+        // users: [User]
+        // user(username: String!): User
+        // books(username: String): [Book]
+        // book(_id: ID!): Book
 module.exports = typeDefs;

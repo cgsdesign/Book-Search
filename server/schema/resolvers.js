@@ -1,6 +1,7 @@
 const {User, Book} = require('../models');
 const {AuthenticationError} = require('apollo-server-express');
 const {signToken} = require('../utils/auth');
+const { collection } = require('../config/connection');
 
 
 
@@ -57,6 +58,7 @@ const resolvers = {
         },
 
         deleteBook: async (parent, {bookId}, context) => {
+            console.log('backend', bookId)
             if(context.user) {
                 const updatedBookList = await User.findOneAndUpdate(
                     {_id: context.user._id },

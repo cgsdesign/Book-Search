@@ -1,43 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
-import { getMe, deleteBook } from '../utils/API';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { QUERY_ME } from '../utils/queries';
+import { DELETE_BOOK } from '../utils/mutations';
 import Auth from '../utils/auth';
+
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useState({});
+  //get information of logged in user
+  const { loading, data} = useQuery(QUERY_ME);
+  //reference [mutation, {error}]
+  const [deleteBook, { error }] = useMutation(DELETE_BOOK);
+  //reference query, in this case me
+  const userData = data?.me || [];
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
+  //const [userBData, setUserBData] = useState({});
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-        if (!token) {
-          return false;
-        }
-
-        const response = await getMe(token);
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        const user = await response.json();
-        setUserData(user);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getUserData();
-  }, [userDataLength]);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
+    console.log("bookId", bookId)//correct
+    //const bookToDelete = bookId;
+
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -45,23 +36,20 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await deleteBook(bookId, token);
+      //data from user, deletebook is function from mutate 
+      await deleteBook({
+        variables: {bookId}
+    });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const updatedUser = await response.json();
-      setUserData(updatedUser);
-      // upon success, remove book's id from localStorage
-      removeBookId(bookId);
+    removeBookId(bookId)
     } catch (err) {
       console.error(err);
     }
   };
 
   // if data isn't here yet, say so
-  if (!userDataLength) {
+  if (!userData) {
+    console.log("no user data pulled")
     return <h2>LOADING...</h2>;
   }
 

@@ -15,7 +15,7 @@ const SavedBooks = () => {
   const [deleteBook, { error }] = useMutation(DELETE_BOOK);
   //reference query, in this case me
   const userData = data?.me || [];
-  
+  console.log(userData)
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -42,6 +42,7 @@ const SavedBooks = () => {
     });
 
     removeBookId(bookId)
+    
     } catch (err) {
       console.error(err);
     }

@@ -65,7 +65,10 @@ const resolvers = {
                     {$pull: {savedBooks: {bookId}}},
                     {new: true}
                 )
-            }
+                
+                return updatedBookList
+                } 
+            
             throw new AuthenticationError('Not logged in')
         }
 

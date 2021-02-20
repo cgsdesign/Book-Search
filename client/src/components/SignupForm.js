@@ -34,7 +34,7 @@ const SignupForm = () => {
       const { data } = await createUser({
         variables: { ...userFormData }
       });
-      console.log(data);
+
       Auth.login(data.createUser.token);
 
     } catch (e) {

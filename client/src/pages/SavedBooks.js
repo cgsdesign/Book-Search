@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
@@ -12,7 +12,7 @@ const SavedBooks = () => {
   //get information of logged in user
   const { loading, data} = useQuery(QUERY_ME);
   //reference [mutation, {error}]
-  const [deleteBook, { error }] = useMutation(DELETE_BOOK);
+  const [deleteBook] = useMutation(DELETE_BOOK);
   //reference query, in this case me
   const userData = data?.me || [];
   console.log(userData)

@@ -27,11 +27,10 @@ Download files from [this github repo](https://github.com/cgsdesign/Book-Search)
 
 ## <a name="badge">Badges</a>
 
-![badge](https://img.shields.io/badge/IndexedDB-orange)
 ![badge](https://img.shields.io/badge/Express-brightgreen)
 ![badge](https://img.shields.io/badge/NodeJS-brightgreen)
 ![badge](https://img.shields.io/badge/React-brightgreen)
-![badge](https://img.shields.io/badge/MongoDBAtlas-brightgreen)
+![badge](https://img.shields.io/badge/MongoDB-brightgreen)
 ![badge](https://img.shields.io/badge/ServiceWorkers-brightgreen)
 ![badge](https://img.shields.io/badge/Heroku-brightgreen)
 

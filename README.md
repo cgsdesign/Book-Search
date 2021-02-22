@@ -20,7 +20,7 @@ For this project I worked with MERN and Heroku to make a google book search app 
 Download files from [this github repo](https://github.com/cgsdesign/Book-Search). Install dependencies. 
 * Note: this app is intended for Google Crome Use Only.
 
-![Budget-Tracker](./LiveAppStill.png)
+![Budget-Tracker](./still.png)
 
 ## License
 * MIT

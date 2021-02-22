@@ -31,7 +31,6 @@ Download files from [this github repo](https://github.com/cgsdesign/Book-Search)
 ![badge](https://img.shields.io/badge/NodeJS-brightgreen)
 ![badge](https://img.shields.io/badge/React-brightgreen)
 ![badge](https://img.shields.io/badge/MongoDB-brightgreen)
-![badge](https://img.shields.io/badge/ServiceWorkers-brightgreen)
 ![badge](https://img.shields.io/badge/Heroku-brightgreen)
 
 ## <a name="contributing">Contributing Information</a>
